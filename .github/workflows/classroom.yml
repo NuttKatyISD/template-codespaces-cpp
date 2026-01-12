@@ -35,9 +35,9 @@ jobs:
         uses: compscirocks/autograding-io-grader@main
         with:
           test-name: Test 1
-          setup-command: g++ $RUN_FILE.cpp -o $RUN_FILE
-          command: ./$RUN_FILE
-          filename: $DATA_FILE
+          setup-command: g++ ${{ env.RUN_FILE}}.cpp -o ${{ env.RUN_FILE }}
+          command: ./${{ env.RUN_FILE }}
+          filename: ${{ env.DATA_FILE }}
           input: |-
             Some test input
           expected-output: |-
