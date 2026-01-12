@@ -1,8 +1,8 @@
 {
-  "name": "Python 3",
-  "image": "mcr.microsoft.com/devcontainers/python:0-3.11-bullseye",
+  "name": "Linux Universal",
+  "image": "mcr.microsoft.com/devcontainers/universal:linux",
   "features": {
-    "ghcr.io/devcontainers-contrib/features/coverage-py:2": {}
+    
   },
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},
@@ -16,7 +16,6 @@
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
         "streetsidesoftware.code-spell-checker",
-        "ms-python.python"
       ]
     }
   }
