@@ -6,6 +6,9 @@
 #
 # If you have questions, please contact your instructor.
 name: Autograding Tests
+env:
+  RUN_FILE: program
+  DATA_FILE: test.dat
 on:
   push:
     branches:
@@ -25,13 +28,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Install build tools
+        run: sudo apt-get update && sudo apt-get install -y g++
       - name: Test 1
         id: test-1
         uses: compscirocks/autograding-io-grader@main
         with:
           test-name: Test 1
-          setup-command: if [ -f "requirements.txt"]; then pip install -r requirements.txt; fi
-          command: python runner.py
+          setup-command: g++ $RUN_FILE.cpp -o $RUN_FILE
+          command: ./$RUN_FILE
+          filename: $DATA_FILE
           input: |-
             Some test input
           expected-output: |-
@@ -48,8 +54,9 @@ jobs:
         uses: compscirocks/autograding-io-grader@main
         with:
           test-name: Test 2
-          setup-command: if [ -f "requirements.txt"]; then pip install -r requirements.txt; fi
-          command: python runner.py
+          setup-command: g++ $RUN_FILE.cpp -o $RUN_FILE
+          command: ./$RUN_FILE
+          filename: $DATA_FILE
           input: |-
             Some test input
           expected-output: |-
